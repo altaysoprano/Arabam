@@ -293,7 +293,34 @@
             android:textColor="#000000"></TextView>
     </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
+            android:id="@+id/linear_layout_name_surname"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_fuel">
+
+            <TextView
+                android:text="Name-Surname: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/name_surname_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="#000000"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
         android:id="@+id/linear_layout_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -302,7 +329,7 @@
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_fuel">
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_phone">
 
         <TextView
             android:text="Text: "
@@ -318,6 +345,37 @@
             android:textAlignment="center"
             android:textColor="#000000"></TextView>
     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_phone"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#D0D0D0"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_name_surname">
+
+            <TextView
+                android:text="Phone: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </TextView>
+
+            <TextView
+                android:id="@+id/phone_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="#000000"></TextView>
+        </LinearLayout>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -21,6 +21,8 @@ import com.example.arabamapp.Model.CarModelDetail;
 import com.example.arabamapp.adapter.ImageAdapter;
 import com.example.arabamapp.viewmodel.CarListViewModel;
 
+import org.w3c.dom.Text;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_ID = "package com.example.arabamapp.EXTRA_ID";
@@ -37,6 +39,8 @@ public class DetailActivity extends AppCompatActivity {
     TextView gearTV;
     TextView fuelTV;
     TextView textTV;
+    TextView nameSurnameTV;
+    TextView phoneTV;
     String[] carImages;
 
     @Override
@@ -58,6 +62,8 @@ public class DetailActivity extends AppCompatActivity {
         gearTV = findViewById(R.id.gear_tv);
         fuelTV = findViewById(R.id.fuel_tv);
         textTV = findViewById(R.id.text_tv);
+        nameSurnameTV = findViewById(R.id.name_surname_tv);
+        phoneTV = findViewById(R.id.phone_tv);
 
         carListViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(CarListViewModel.class);
 
@@ -80,6 +86,8 @@ public class DetailActivity extends AppCompatActivity {
                 String gear = carModelDetail.getProperties().get(3).getValue();
                 String fuel = carModelDetail.getProperties().get(4).getValue();
                 String text = carModelDetail.getText();
+                String phone = carModelDetail.getUserInfo().getPhoneFormatted();
+                String userNameSurname = carModelDetail.getUserInfo().getNameSurname();
 
                 for(int i = 0; i < carModelDetail.getPhotos().size(); i++) {
                     carImages[i] = carModelDetail.getPhotos().get(i).replace("{0}", "800x600");
@@ -99,6 +107,8 @@ public class DetailActivity extends AppCompatActivity {
                 gearTV.setText(gear);
                 fuelTV.setText(fuel);
                 textTV.setText(text);
+                nameSurnameTV.setText(userNameSurname);
+                phoneTV.setText(phone);
             }
         });
 
