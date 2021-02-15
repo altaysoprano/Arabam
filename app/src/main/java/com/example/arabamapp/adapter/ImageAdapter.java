@@ -1,6 +1,7 @@
 package com.example.arabamapp.adapter;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ public class ImageAdapter extends PagerAdapter {
 
     private Context context;
     private String[] imageUrls;
+
 
     public ImageAdapter(Context context, String[] imageUrls) {
         this.context = context;
@@ -48,4 +50,13 @@ public class ImageAdapter extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);
     }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return super.getItemPosition(object);
+    }
+
+
+
+
 }

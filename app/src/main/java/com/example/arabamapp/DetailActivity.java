@@ -7,8 +7,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +25,6 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_ID = "package com.example.arabamapp.EXTRA_ID";
     private CarListViewModel carListViewModel;
-    private ImageView carImageView;
-    private MutableLiveData<CarModelDetail> carModelDetail;
     ViewPager viewPager;
     TextView titleTV;
     TextView locationTV;
@@ -34,6 +37,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView gearTV;
     TextView fuelTV;
     TextView textTV;
+    String[] carImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onChanged(CarModelDetail carModelDetail) {
 
-                String[] carImages = new String[carModelDetail.getPhotos().size()];
+                carImages = new String[carModelDetail.getPhotos().size()];
                 String title = carModelDetail.getTitle();
                 String location = carModelDetail.getLocation().getTownName() + ", " + carModelDetail.getLocation().getCityName();;
                 String modelName = carModelDetail.getModelName();
@@ -95,8 +99,36 @@ public class DetailActivity extends AppCompatActivity {
                 gearTV.setText(gear);
                 fuelTV.setText(fuel);
                 textTV.setText(text);
-
             }
         });
+
+        GestureDetector tapGestureDetector = new GestureDetector(this, new TapGestureListener());
+
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                tapGestureDetector.onTouchEvent(motionEvent);
+                return false;
+            }
+        });
+
     }
+
+    class TapGestureListener extends GestureDetector.SimpleOnGestureListener{
+
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            Intent intent = new Intent(DetailActivity.this, FullScreenActivity.class);
+            intent.putExtra(FullScreenActivity.EXTRA_PHOTO, viewPagerOnClick());
+            startActivity(intent);
+            return true;
+        }
+    }
+
+    public String viewPagerOnClick() {
+        String photo = carImages[viewPager.getCurrentItem()];
+        return photo;
+    }
+
+
 }
