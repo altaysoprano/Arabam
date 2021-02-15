@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/filter_item"
+        android:icon="@drawable/ic_filter"
+        android:title="Filter"
+        app:showAsAction="ifRoom"
+        >
+
+    </item>
+    <item
+        android:id="@+id/sort_item"
+        android:icon="@drawable/ic_sort"
+        android:title="Sort"
+        app:showAsAction="ifRoom">
+
+
+    <menu>
+        <item
+            android:id="@+id/sort_newest_date"
+            android:title="Newest Dates"
+            android:orderInCategory="1"
+            ></item>
+        <item
+            android:id="@+id/sort_min_price"
+            android:title="Min Price"
+            android:orderInCategory="2"
+            ></item>
+
+        <item
+            android:id="@+id/sort_newest_car"
+            android:title="Newest Cars"
+            android:orderInCategory="3"
+            ></item>
+
+
+
+    </menu>
+
+        </item>
+</menu>
